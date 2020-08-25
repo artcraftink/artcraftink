@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gpeshans/artcraftink.svg?branch=master)](https://travis-ci.org/gpeshans/artcraftink)
+
 # artcraftink.com
 
 ### Built with [Gatsby.js](https://www.gatsbyjs.org)!
