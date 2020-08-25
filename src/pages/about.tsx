@@ -8,7 +8,7 @@ const About = () => (
   <Layout>
     <SEO title="Page two" />
     <h1>Hi from the about page</h1>
-    <p>Welcome to the about page</p>
+    <p>Welcome to the about page of artcraftink</p>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
 );
