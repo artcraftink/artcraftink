@@ -39,7 +39,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "prettier": "prettier --check '**/*.{ts,tsx,md,json,css,scss}'",
     "prettier:fix": "prettier --write '**/*.{ts,tsx,md,json,css,scss}'",
     "tsc": "tsc",
