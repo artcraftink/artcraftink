@@ -8,10 +8,9 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
-      // TODO: change fonts
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Courier+Prime:300,400`, `Montserrat:300,400`],
+        fonts: [`Source+Sans+Pro:200,300`, `Montserrat:200,300`],
         display: 'swap',
       },
     },

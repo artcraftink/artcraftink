@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0 auto;
+
+  font: normal $font-size-base $font-family-base;
+  color: $cl-primary;
+  line-height: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px $cl-primary inset;
+  }
+}
+
+a {
+  cursor: pointer;
+  color: $cl-primary-dark;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100&;
+}
+
+footer {
+  flex-shrink: 0;
+}

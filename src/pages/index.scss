@@ -1,0 +1,34 @@
+@import '../styles/variables.scss';
+
+.aci-Section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $cl-black;
+  font-size: $font-size-title;
+
+  &__first {
+    min-height: calc(100vh - 100px);
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__artist {
+    height: 300px;
+    background-color: teal;
+  }
+
+  &__gallery {
+    height: 300px;
+  }
+
+  &__faq {
+    height: 300px;
+    background-color: teal;
+  }
+
+  &__contact {
+    height: 300px;
+  }
+}
