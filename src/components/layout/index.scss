@@ -29,6 +29,14 @@ a {
   text-decoration: underline;
 }
 
+.aci-PageWrapper {
+  background-image: url('../../images/banner.jpg');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 main {
   display: flex;
   flex-direction: column;

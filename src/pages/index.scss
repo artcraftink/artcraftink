@@ -12,6 +12,7 @@
     min-height: calc(100vh - 100px);
     overflow: hidden;
     position: relative;
+    background: transparent;
   }
 
   &__artist {
@@ -21,6 +22,7 @@
 
   &__gallery {
     height: 300px;
+    background: transparent;
   }
 
   &__faq {

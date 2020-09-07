@@ -8,7 +8,7 @@ import './index.scss';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Artcraftink" />
     <ContainerFluid>
       <Row>
         <Column className="aci-Section aci-Section__first">Home section</Column>
