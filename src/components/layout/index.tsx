@@ -14,8 +14,8 @@ interface LayoutProps {
 export const Layout = ({ children, siteMetadata }: LayoutProps) => {
   return (
     <>
+      <Header siteMetadata={siteMetadata} />
       <div className="aci-PageWrapper">
-        <Header siteMetadata={siteMetadata} />
         <main>{children}</main>
         <Footer siteMetadata={siteMetadata}></Footer>
       </div>
