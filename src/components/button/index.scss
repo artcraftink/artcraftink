@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.aciButton {
+  background-color: $cl-black;
+  border: 1px solid $cl-primary;
+  color: $cl-primary;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: $font-size-medium;
+  font-weight: 200;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.aciButton:hover {
+  background-color: $cl-primary;
+  color: $cl-highlight-dark;
+}

@@ -4,6 +4,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import { Row, Column } from '../components/grid';
 import { Page } from '../components/page';
+import { Button } from '../components/button';
 
 import './index.scss';
 
@@ -13,25 +14,34 @@ const IndexPage = () => {
       {(data) => (
         <>
           <section id="home">
-            <Row className="aci-Section aci-Section__first">
-              <Column className="aci-Section__first-title" spanSm={12}>
-                ArtCraft Ink
-              </Column>
-              <Column className="aci-Section__first-subtitle" spanSm={12}>
-                Tattoo Studio
-              </Column>
-              <Column className="aci-Section__first-address" spanSm={12}>
+            <Row className="aci-Section aci-Section__home">
+              <Column className="aci-Section__home-title">ArtCraft Ink</Column>
+              <Column className="aci-Section__home-subtitle">Tattoo Studio</Column>
+              <Column className="aci-Section__home-address">
                 <a href="#contact">{data.siteMetadata.address}</a>
               </Column>
-              <Column className="aci-Section__first-scroll-down">
+              <Column className="aci-Section__home-scroll-down">
                 <a href="#artist">
-                  <FontAwesomeIcon icon={faChevronDown} size="3x" className="aci-Section__first-scroll-down-icon" />
+                  <FontAwesomeIcon icon={faChevronDown} size="3x" className="aci-Section__home-scroll-down-icon" />
                 </a>
               </Column>
             </Row>
           </section>
+
           <section id="artist">
-            <Column className="aci-Section aci-Section__artist">Artist section</Column>
+            <Row className="aci-Section aci-Section__artist">
+              <Column className="aci-Section__artist-row aci-Section__artist-title">Artist</Column>
+              <Column className="aci-Section__artist-row aci-Section__artist-image">
+                <img src="https://via.placeholder.com/225" />
+              </Column>
+              <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
+                <Button text="View Gallery" />
+              </Column>
+              <Column className="aci-Section__artist-row aci-Section__artist-name">
+                {data.siteMetadata.artistName}
+              </Column>
+              <Column className="aci-Section__artist-row aci-Section__artist-bio">{data.siteMetadata.artistBio}</Column>
+            </Row>
           </section>
 
           <section id="faq">

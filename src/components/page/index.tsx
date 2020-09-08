@@ -44,6 +44,8 @@ export class Page extends React.Component<PageProps> {
                 email
                 instagram
                 facebook
+                artistName
+                artistBio
               }
             }
           }

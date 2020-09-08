@@ -9,4 +9,6 @@ export interface SiteMetadata {
   email: string;
   instagram: string;
   facebook: string;
+  artistName: string;
+  artistBio: string
 }
