@@ -2,10 +2,10 @@
 
 .aci-Header {
   background: transparent;
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
-  min-height: 100px;
+  height: 100px;
   z-index: 9000;
   font-size: $font-size-large;
 }

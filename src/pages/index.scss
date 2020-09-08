@@ -6,28 +6,51 @@
   justify-content: center;
 
   background-color: $cl-black;
-  font-size: $font-size-title;
+
+  padding: 80px;
 
   &__first {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 150px);
     overflow: hidden;
     position: relative;
     background: transparent;
+    text-align: center;
+    align-content: center;
+
+    &-title {
+      font: normal $font-size-title $font-family-title;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+    }
+
+    &-subtitle {
+      font-weight: 300;
+      font-size: $font-size-large;
+    }
+
+    &-address {
+      font-size: $font-size-small;
+      margin-top: 30px;
+    }
+
+    &-scroll-down {
+      position: absolute;
+      bottom: 25px;
+      box-sizing: border-box;
+
+      :hover {
+        color: $cl-highlight-dark;
+      }
+    }
   }
 
   &__artist {
     height: 300px;
-    background-color: teal;
-  }
-
-  &__gallery {
-    height: 300px;
-    background: transparent;
   }
 
   &__faq {
     height: 300px;
-    background-color: teal;
+    background-color: transparent;
   }
 
   &__contact {

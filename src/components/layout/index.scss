@@ -30,7 +30,7 @@ a {
 }
 
 .aci-PageWrapper {
-  background-image: url('../../images/banner.jpg');
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('../../images/banner.jpg');
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;

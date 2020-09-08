@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `artcraftink`,
+    title: `Artcraft Ink`,
     description: `artcraftink.com`,
     author: `@gpeshans`,
   },
@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Source+Sans+Pro:200,300`, `Montserrat:200,300`],
+        fonts: [`Source+Sans+Pro:200,300,400`, `Montserrat:200,300`],
         display: 'swap',
       },
     },

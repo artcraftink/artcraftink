@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface SEOProps {
-  title: string;
+  title?: string;
   description?: string;
   lang?: string;
   meta?: JSX.IntrinsicElements['meta'][];
@@ -42,13 +42,14 @@ export const SEO = ({ title, description, lang = 'en', meta = [] }: SEOProps) =>
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  const metaTitle = title || site.siteMetadata.title;
 
   return (
     <Helmet
       htmlAttributes={{
         lang: lang,
       }}
-      title={title}
+      title={metaTitle}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
@@ -57,7 +58,7 @@ export const SEO = ({ title, description, lang = 'en', meta = [] }: SEOProps) =>
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -77,7 +78,7 @@ export const SEO = ({ title, description, lang = 'en', meta = [] }: SEOProps) =>
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
