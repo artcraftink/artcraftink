@@ -17,18 +17,13 @@ export const Footer = ({ siteMetadata }: FooterProps) => {
     <footer className="aci-Footer">
       <ContainerFluid>
         <Row>
-          <Column className="aci-Footer__section" spanXl={3} spanLg={3} spanMd={6} spanSm={12}>
+          <Column className="aci-Footer__section" spanXl={4} spanLg={4} spanMd={4} spanSm={12}>
             <div className="aci-Footer__section-title">Location</div>
             <p className="aci-Footer__section-value">
               <a href="#contact">{siteMetadata.address}</a>
             </p>
           </Column>
-          <Column className="aci-Footer__section" spanXl={3} spanLg={3} spanMd={6} spanSm={12}>
-            <div className="aci-Footer__section-title">Hours</div>
-            <p className="aci-Footer__section-value">{siteMetadata.hoursLine1}</p>
-            <p className="aci-Footer__section-value">{siteMetadata.hoursLine2}</p>
-          </Column>
-          <Column className="aci-Footer__section" spanXl={4} spanLg={4} spanMd={6} spanSm={12}>
+          <Column className="aci-Footer__section" spanXl={4} spanLg={4} spanMd={4} spanSm={12}>
             <div className="aci-Footer__section-title">Contact</div>
             <p className="aci-Footer__section-value">
               <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
@@ -37,7 +32,7 @@ export const Footer = ({ siteMetadata }: FooterProps) => {
               <a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>
             </p>
           </Column>
-          <Column className="aci-Footer__section" spanXl={2} spanLg={2} spanMd={6} spanSm={12}>
+          <Column className="aci-Footer__section" spanXl={4} spanLg={4} spanMd={4} spanSm={12}>
             <div className="aci-Footer__section-title">Follow</div>
             <p className="aci-Footer__section-value">
               <span className="aci-Footer__section-social-media-link">

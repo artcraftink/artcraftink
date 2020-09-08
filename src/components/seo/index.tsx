@@ -7,42 +7,19 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import { SiteMetadata } from '../../data';
 
 interface SEOProps {
   title?: string;
   description?: string;
   lang?: string;
   meta?: JSX.IntrinsicElements['meta'][];
+  siteMetadata: SiteMetadata;
 }
 
-interface SiteDataProps {
-  site: {
-    siteMetadata: {
-      title: string;
-      description: string;
-      author: string;
-    };
-  };
-}
-
-export const SEO = ({ title, description, lang = 'en', meta = [] }: SEOProps) => {
-  const { site } = useStaticQuery<SiteDataProps>(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `,
-  );
-
-  const metaDescription = description || site.siteMetadata.description;
-  const metaTitle = title || site.siteMetadata.title;
+export const SEO = ({ title, description, lang = 'en', meta = [], siteMetadata }: SEOProps) => {
+  const metaDescription = description || siteMetadata.description;
+  const metaTitle = title || siteMetadata.title;
 
   return (
     <Helmet
@@ -50,7 +27,7 @@ export const SEO = ({ title, description, lang = 'en', meta = [] }: SEOProps) =>
         lang: lang,
       }}
       title={metaTitle}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${siteMetadata.title}`}
       meta={[
         {
           name: `description`,
@@ -71,10 +48,6 @@ export const SEO = ({ title, description, lang = 'en', meta = [] }: SEOProps) =>
         {
           name: `twitter:card`,
           content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
         },
         {
           name: `twitter:title`,
