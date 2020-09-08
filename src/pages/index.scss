@@ -13,8 +13,8 @@
   padding: 80px;
 
   &__first {
-    height: 100vh;
-    height: -webkit-fill-available;
+    height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
     position: relative;
     background: transparent;
