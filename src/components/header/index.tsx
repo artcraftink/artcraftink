@@ -2,6 +2,8 @@ import * as React from 'react';
 // import { useStaticQuery, graphql } from 'gatsby';
 // import Img, { FluidObject } from 'gatsby-image';
 
+import { SiteMetadata } from '../../data';
+
 import './index.scss';
 
 // interface ImgData {
@@ -12,8 +14,12 @@ import './index.scss';
 //   };
 // }
 
+interface HeaderProps {
+  siteMetadata: SiteMetadata;
+}
+
 // TODO: GP - fix the sizing of the logo
-export const Header = () => {
+export const Header = (_props: HeaderProps) => {
   // const data = useStaticQuery<ImgData>(graphql`
   //   query {
   //     logo: file(relativePath: { eq: "logo/artcraftink-icon.jpg" }) {

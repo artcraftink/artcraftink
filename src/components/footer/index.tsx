@@ -1,11 +1,69 @@
 import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+
+import { SiteMetadata } from '../../data';
+import { ContainerFluid, Row, Column } from '../grid';
 
 import './index.scss';
 
-export const Footer = () => (
-  <footer className="aci-Footer">
-    © {new Date().getFullYear()}
-    {` `}
-    <a href="https://www.instagram.com/artcraftink/">artcraftink</a>
-  </footer>
-);
+interface FooterProps {
+  siteMetadata: SiteMetadata;
+}
+
+export const Footer = ({ siteMetadata }: FooterProps) => {
+  return (
+    <footer className="aci-Footer">
+      <ContainerFluid>
+        <Row>
+          <Column className="aci-Footer__section" spanXl={3} spanLg={3} spanMd={6} spanSm={12}>
+            <div className="aci-Footer__section-title">Location</div>
+            <p className="aci-Footer__section-value">
+              <a href="#contact">{siteMetadata.address}</a>
+            </p>
+          </Column>
+          <Column className="aci-Footer__section" spanXl={3} spanLg={3} spanMd={6} spanSm={12}>
+            <div className="aci-Footer__section-title">Hours</div>
+            <p className="aci-Footer__section-value">{siteMetadata.hoursLine1}</p>
+            <p className="aci-Footer__section-value">{siteMetadata.hoursLine2}</p>
+          </Column>
+          <Column className="aci-Footer__section" spanXl={4} spanLg={4} spanMd={6} spanSm={12}>
+            <div className="aci-Footer__section-title">Contact</div>
+            <p className="aci-Footer__section-value">
+              <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
+            </p>
+            <p className="aci-Footer__section-value">
+              <a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>
+            </p>
+          </Column>
+          <Column className="aci-Footer__section" spanXl={2} spanLg={2} spanMd={6} spanSm={12}>
+            <div className="aci-Footer__section-title">Follow</div>
+            <p className="aci-Footer__section-value">
+              <span className="aci-Footer__section-social-media-link">
+                <a href={siteMetadata.instagram} target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faInstagram} size="2x" />
+                </a>
+              </span>
+              <span className="aci-Footer__section-social-media-link">
+                <a href={siteMetadata.facebook} target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faFacebookF} size="2x" />
+                </a>
+              </span>
+              <span className="aci-Footer__section-social-media-link">
+                <a href={`mailto:${siteMetadata.email}`}>
+                  <FontAwesomeIcon icon={faEnvelope} size="2x" />
+                </a>
+              </span>
+            </p>
+          </Column>
+        </Row>
+        <Row>
+          <Column className="aci-Footer__copyright">
+            Copyright © {siteMetadata.title} {new Date().getFullYear()}. All rights reserved.
+          </Column>
+        </Row>
+      </ContainerFluid>
+    </footer>
+  );
+};

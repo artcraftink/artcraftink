@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 
+import { SiteMetadata } from '../../data';
 import { Header } from '../header';
 import { Footer } from '../footer';
 
@@ -8,33 +8,16 @@ import './index.scss';
 
 interface LayoutProps {
   children: JSX.Element[];
+  siteMetadata: SiteMetadata;
 }
 
-interface SiteDataProps {
-  site: {
-    siteMetadata: {
-      title: string;
-    };
-  };
-}
-
-export const Layout = ({ children }: LayoutProps) => {
-  const data = useStaticQuery<SiteDataProps>(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
+export const Layout = ({ children, siteMetadata }: LayoutProps) => {
   return (
     <>
-      <Header />
+      <Header siteMetadata={siteMetadata} />
       <div className="aci-PageWrapper">
         <main>{children}</main>
-        <Footer></Footer>
+        <Footer siteMetadata={siteMetadata}></Footer>
       </div>
     </>
   );

@@ -3,6 +3,13 @@ module.exports = {
     title: `Artcraft Ink`,
     description: `artcraftink.com`,
     author: `@gpeshans`,
+    address: '47 Marshal Tito Berovo',
+    phone: '+389 78 933 454',
+    email: 'bubotomic@gmail.com',
+    instagram: 'https://www.instagram.com/artcraftink',
+    facebook: 'https://www.facebook.com/artcraftink',
+    hoursLine1: 'Open 5 days from 2pm to 10pm',
+    hoursLine2: 'Closed Saturday and Sunday',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

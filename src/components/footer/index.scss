@@ -1,7 +1,30 @@
 @import '../../styles/variables.scss';
 
 .aci-Footer {
+  padding: 100px 15%;
   background: $cl-black;
-  font-size: $font-size-medium;
-  min-height: 100px;
+  word-wrap: break-word;
+  text-align: center;
+
+  &__section {
+    padding-bottom: 30px;
+  }
+
+  &__section-title {
+    font: 400 $font-size-title-2 $font-family-title;
+    text-transform: uppercase;
+  }
+
+  &__section-value {
+    font-size: $font-size-small;
+  }
+
+  &__section-social-media-link {
+    padding: 0 10px;
+  }
+
+  &__copyright {
+    margin-top: 50px;
+    text-align: center;
+  }
 }
