@@ -21,7 +21,7 @@ const IndexPage = () => (
             Tattoo Studio
           </Column>
           <Column className="aci-Section__first-address" spanSm={12}>
-            <a href="#contact">42 Marshal Tito Berovo</a>
+            <a href="#contact">47 Marshal Tito Berovo</a>
           </Column>
           <Column className="aci-Section__first-scroll-down">
             <a href="#artist">

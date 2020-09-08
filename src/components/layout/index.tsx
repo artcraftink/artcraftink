@@ -31,7 +31,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header />
       <div className="aci-PageWrapper">
         <main>{children}</main>
         <Footer></Footer>
