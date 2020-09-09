@@ -7,9 +7,10 @@
   padding: 16px 32px;
   text-align: center;
   text-decoration: underline;
+  text-transform: uppercase;
   display: inline-block;
   font-size: $font-size-medium;
-  font-weight: 200;
+  font-weight: normal;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -18,4 +19,5 @@
 .aciButton:hover {
   background-color: $cl-primary;
   color: $cl-highlight-dark;
+  text-decoration: none;
 }

@@ -34,13 +34,14 @@ const IndexPage = () => {
               <Column className="aci-Section__artist-row aci-Section__artist-image">
                 <img src="https://via.placeholder.com/225" />
               </Column>
-              <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
-                <Button text="View Gallery" />
-              </Column>
               <Column className="aci-Section__artist-row aci-Section__artist-name">
                 {data.siteMetadata.artistName}
               </Column>
               <Column className="aci-Section__artist-row aci-Section__artist-bio">{data.siteMetadata.artistBio}</Column>
+              <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
+                <Button text="View gallery" />
+                <Button text="Follow me" />
+              </Column>
             </Row>
           </section>
 

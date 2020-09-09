@@ -8,12 +8,12 @@
   text-align: center;
   word-wrap: break-word;
 
-  background-color: $cl-black;
-
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box; /* Opera/IE 8+ */
-  padding: 80px;
+  padding: 10% 20%;
+
+  background-color: $cl-black;
 
   &__home {
     height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
@@ -23,8 +23,8 @@
     background: transparent;
 
     &-title {
-      font: 400 $font-size-title $font-family-title;
-      letter-spacing: 0.1em;
+      font: 300 $font-size-title $font-family-title;
+      text-transform: uppercase;
     }
 
     &-subtitle {
@@ -53,12 +53,11 @@
     min-height: calc(var(--vh, 1vh) * 100);
 
     &-row {
-      // padding-top: 30px;
       padding-bottom: 30px;
     }
 
     &-title {
-      font: 400 $font-size-title-2 $font-family-title;
+      font: 300 $font-size-title-2 $font-family-title;
       letter-spacing: 0.1em;
     }
 
@@ -71,6 +70,9 @@
     }
 
     &-gallery-link {
+      button {
+        margin: 10px;
+      }
     }
 
     &-name {
@@ -80,9 +82,7 @@
 
     &-bio {
       font-size: $font-size-medium;
-      font-weight: 300;
       text-align: justify;
-      max-width: 800px;
     }
   }
 
