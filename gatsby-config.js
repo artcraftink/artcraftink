@@ -4,6 +4,7 @@ module.exports = {
     description: `artcraftink.com`,
     author: `@gpeshans`,
     address: '47 Marshal Tito Berovo',
+    country: 'North Macedonia',
     phone: '+389 78 933 454',
     email: 'bubotomic@gmail.com',
     instagram: 'https://www.instagram.com/artcraftink',

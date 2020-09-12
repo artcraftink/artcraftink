@@ -40,6 +40,7 @@ export class Page extends React.Component<PageProps> {
               siteMetadata {
                 title
                 address
+                country
                 phone
                 email
                 instagram

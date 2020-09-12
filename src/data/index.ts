@@ -5,10 +5,11 @@ export interface SiteMetadata {
   title: string;
   description: string;
   address: string;
+  country: string;
   phone: string;
   email: string;
   instagram: string;
   facebook: string;
   artistName: string;
-  artistBio: string
+  artistBio: string;
 }

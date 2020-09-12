@@ -70,6 +70,8 @@
     }
 
     &-gallery-link {
+      font-size: $font-size-small;
+
       button {
         margin: 10px;
       }
@@ -115,6 +117,44 @@
   }
 
   &__contact {
-    height: 300px;
+    font-size: $font-size-small;
+
+    &-title {
+      font: 300 $font-size-title-2 $font-family-title;
+      letter-spacing: 0.1em;
+      padding-bottom: 30px;
+    }
+
+    &-form {
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box; /* Firefox, other Gecko */
+      box-sizing: border-box; /* Opera/IE 8+ */
+      padding: 20px;
+
+      &-submit-button {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      &-row {
+        text-align: left;
+        margin-bottom: 15px;
+      }
+    }
+
+    &-map {
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box; /* Firefox, other Gecko */
+      box-sizing: border-box; /* Opera/IE 8+ */
+      padding: 20px;
+
+      text-align: left;
+
+      &-wrapper {
+        position: relative;
+        height: 20rem;
+      }
+    }
   }
 }
