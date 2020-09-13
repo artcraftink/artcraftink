@@ -4,8 +4,16 @@
 export interface SiteMetadata {
   title: string;
   description: string;
-  address: string;
-  country: string;
+  addressLine1: string;
+  addressLine2: string;
+  map: {
+    apiKey: string;
+    center: {
+      lat: number;
+      lng: number;
+    };
+    zoom: number;
+  };
   phone: string;
   email: string;
   instagram: string;

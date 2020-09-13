@@ -19,9 +19,12 @@ export const Footer = ({ siteMetadata }: FooterProps) => {
         <Row>
           <Column className="aci-Footer__section" spanXl={4} spanLg={4} spanMd={4} spanSm={12}>
             <div className="aci-Footer__section-title">Location</div>
-            <p className="aci-Footer__section-value">
-              <a href="#contact">{siteMetadata.address}</a>
-            </p>
+            <div className="aci-Footer__section-value">
+              <a href="#location">
+                <p>{siteMetadata.addressLine1}</p>
+                <p>{siteMetadata.addressLine2}</p>
+              </a>
+            </div>
           </Column>
           <Column className="aci-Footer__section" spanXl={4} spanLg={4} spanMd={4} spanSm={12}>
             <div className="aci-Footer__section-title">Contact</div>

@@ -39,8 +39,16 @@ export class Page extends React.Component<PageProps> {
             site {
               siteMetadata {
                 title
-                address
-                country
+                addressLine1
+                addressLine2
+                map {
+                  apiKey
+                  center {
+                    lat
+                    lng
+                  }
+                  zoom
+                }
                 phone
                 email
                 instagram

@@ -1,10 +1,26 @@
+const dotenv = require('dotenv');
+
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
+console.log(`Using environment config: '${activeEnv}'`);
+dotenv.config({
+  path: `.env.${activeEnv}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Artcraft Ink`,
     description: `artcraftink.com`,
     author: `@gpeshans`,
-    address: '47 Marshal Tito Berovo',
-    country: 'North Macedonia',
+    addressLine1: '47 Marshal Tito',
+    addressLine2: '2330 Berovo, Macedonia',
+    map: {
+      apiKey: process.env.GOOGLE_MAPS_API_KEY,
+      center: {
+        lat: 41.7098,
+        lng: 22.8542478,
+      },
+      zoom: 15,
+    },
     phone: '+389 78 933 454',
     email: 'bubotomic@gmail.com',
     instagram: 'https://www.instagram.com/artcraftink',

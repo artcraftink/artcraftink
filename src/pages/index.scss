@@ -32,7 +32,7 @@
       font-size: $font-size-large;
     }
 
-    &-address {
+    &-artist {
       font-size: $font-size-small;
       margin-top: 30px;
     }
@@ -104,6 +104,7 @@
       -moz-box-sizing: border-box; /* Firefox, other Gecko */
       box-sizing: border-box; /* Opera/IE 8+ */
       padding: 20px;
+      align-self: flex-start;
 
       &-question {
         font-size: $font-size-large;
@@ -125,11 +126,27 @@
       padding-bottom: 30px;
     }
 
+    &-info {
+      align-self: flex-start;
+      text-align: left;
+      padding-bottom: 20px;
+
+      &-title {
+        font-size: $font-size-title-3;
+        padding: 20px 0;
+      }
+
+      &-value {
+        font-size: $font-size-medium;
+        padding-bottom: 10px;
+      }
+    }
+
     &-form {
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
       -moz-box-sizing: border-box; /* Firefox, other Gecko */
       box-sizing: border-box; /* Opera/IE 8+ */
-      padding: 20px;
+      text-align: left;
 
       &-submit-button {
         display: flex;
@@ -138,22 +155,30 @@
       }
 
       &-row {
-        text-align: left;
         margin-bottom: 15px;
       }
     }
+  }
+
+  &__location {
+    min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+    min-height: calc(var(--vh, 1vh) * 100);
+
+    font-size: $font-size-small;
+    background-color: rgba($color: $cl-black, $alpha: 0.8);
+
+    &-title {
+      font: 300 $font-size-title-2 $font-family-title;
+      letter-spacing: 0.1em;
+      padding-bottom: 30px;
+    }
 
     &-map {
-      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-      -moz-box-sizing: border-box; /* Firefox, other Gecko */
-      box-sizing: border-box; /* Opera/IE 8+ */
-      padding: 20px;
-
-      text-align: left;
+      align-self: flex-start;
 
       &-wrapper {
-        position: relative;
-        height: 20rem;
+        width: 100%;
+        height: 30rem;
       }
     }
   }
