@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{Uxhg:function(e,t,n){"use strict";n.r(t);var a=n("q1tI"),o=n("Wbzz"),r=n("/PkL");t.default=function(){return a.createElement(r.a,null,(function(e){return a.createElement(a.Fragment,null,a.createElement("h1",null,"Hi from the about page"),a.createElement("p",null,"Welcome to the about page of artcraftink"),a.createElement(o.Link,{to:"/"},"Go back to the homepage"))}))}}}]);
-//# sourceMappingURL=component---src-pages-about-index-tsx-2e88bb10045e639f2f28.js.map
