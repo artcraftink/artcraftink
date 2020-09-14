@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames';
 import { navigate } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -70,7 +71,7 @@ const IndexPage = () => {
                 <Column className="aci-Section__artist-row aci-Section__artist-name">
                   {data.siteMetadata.artistName}
                 </Column>
-                <Column className="aci-Section__artist-row aci-Section__artist-bio">
+                <Column spanLg={10} spanXl={8} className="aci-Section__artist-row aci-Section__artist-bio">
                   {data.siteMetadata.artistBio}
                 </Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
@@ -82,24 +83,38 @@ const IndexPage = () => {
 
             <section id="faq">
               <Row className="aci-Section aci-Section__faq">
-                <Column className="aci-Section__faq-title" spanSm={12} spanMd={12} spanLg={12} spanXl={12}>
-                  FAQ
+                <Column className="aci-Section__faq-title">FAQ</Column>
+                <Column spanLg={10} spanXl={8}>
+                  <Row>
+                    {faq.map((item, index) => {
+                      const offset = index % 2 === 1 ? 2 : 0;
+                      return (
+                        <>
+                          <Column
+                            key={index}
+                            className="aci-Section__faq-content"
+                            spanMd={5}
+                            offsetMd={offset}
+                            spanLg={5}
+                            offsetLg={offset}
+                            spanXl={5}
+                            offsetXl={offset}
+                          >
+                            <div className="aci-Section__faq-content-question">{item.question}</div>
+                            <div className="aci-Section__faq-content-answer">{item.answer}</div>
+                          </Column>
+                        </>
+                      );
+                    })}
+                  </Row>
                 </Column>
-                {faq.map((item, index) => (
-                  <Column key={index} className="aci-Section__faq-content" spanSm={12} spanMd={6} spanLg={6} spanXl={6}>
-                    <div className="aci-Section__faq-content-question">{item.question}</div>
-                    <div className="aci-Section__faq-content-answer">{item.answer}</div>
-                  </Column>
-                ))}
               </Row>
             </section>
 
             <section id="contact">
               <Row className="aci-Section aci-Section__contact">
-                <Column className="aci-Section__contact-title" spanSm={12} spanMd={12} spanLg={12} spanXl={12}>
-                  Contact
-                </Column>
-                <Column className="aci-Section__contact-info" spanSm={12} spanMd={6} spanLg={6} spanXl={6}>
+                <Column className="aci-Section__contact-title">Contact</Column>
+                <Column className="aci-Section__contact-info" spanMd={6} spanLg={5} spanXl={4}>
                   <Row>
                     <Column className="aci-Section__contact-info-title">Find us</Column>
                   </Row>
@@ -131,7 +146,7 @@ const IndexPage = () => {
                     </Column>
                   </Row>
                 </Column>
-                <Column className="aci-Section__contact-form" spanSm={12} spanMd={6} spanLg={6} spanXl={6}>
+                <Column className="aci-Section__contact-form" spanMd={6} spanLg={5} spanXl={4}>
                   <form
                     name="contact"
                     method="post"
@@ -142,6 +157,9 @@ const IndexPage = () => {
                   >
                     <input type="hidden" name="form-name" value="contact" />
                     <Row>
+                      <Row>
+                        <Column className="aci-Section__contact-info-title">Message us</Column>
+                      </Row>
                       <Column className="aci-Section__contact-form-row">
                         <label htmlFor="name">
                           Name <sup>*</sup>
@@ -171,10 +189,8 @@ const IndexPage = () => {
 
             <section id="location">
               <Row className="aci-Section aci-Section__location">
-                <Column className="aci-Section__location-title" spanSm={12} spanMd={12} spanLg={12} spanXl={12}>
-                  Location
-                </Column>
-                <Column className="aci-Section__location-map" spanSm={12} spanMd={12} spanLg={12} spanXl={12}>
+                <Column className="aci-Section__location-title">Location</Column>
+                <Column className="aci-Section__location-map" spanLg={10} spanXl={8}>
                   <div className="aci-Section__location-map-wrapper">
                     <GoogleMap
                       bootstrapURLKeys={{ key: data.siteMetadata.map.apiKey }}
