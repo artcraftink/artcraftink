@@ -1,5 +1,4 @@
 import * as React from 'react';
-import classNames from 'classnames';
 import { navigate } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -42,6 +41,10 @@ const IndexPage = () => {
       .catch((error) => alert(error));
   };
 
+  const navigateToGallery = () => {
+    navigate('/gallery');
+  };
+
   return (
     <Page>
       {(data) => {
@@ -75,7 +78,7 @@ const IndexPage = () => {
                   {data.siteMetadata.artistBio}
                 </Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
-                  <Button text="View gallery" />
+                  <Button onClick={() => navigateToGallery()} text="View gallery"></Button>
                   <Button onClick={() => window.open(data.siteMetadata.instagram, '_blank')} text="Follow me" />
                 </Column>
               </Row>
