@@ -9,8 +9,6 @@ import { Page } from '../components/page';
 import { Button } from '../components/button';
 import { Input } from '../components/input';
 import { Textarea } from '../components/textarea';
-import { faq } from '../data/faq';
-
 import './index.scss';
 
 function encode(data: any) {
@@ -80,36 +78,6 @@ const IndexPage = () => {
                 <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
                   <Button onClick={() => navigateToGallery()} text="View gallery"></Button>
                   <Button onClick={() => window.open(data.siteMetadata.instagram, '_blank')} text="Follow me" />
-                </Column>
-              </Row>
-            </section>
-
-            <section id="faq">
-              <Row className="aci-Section aci-Section__faq">
-                <Column className="aci-Section__faq-title">FAQ</Column>
-                <Column spanLg={10} spanXl={8}>
-                  <Row>
-                    {faq.map((item, index) => {
-                      const offset = index % 2 === 1 ? 2 : 0;
-                      return (
-                        <>
-                          <Column
-                            key={index}
-                            className="aci-Section__faq-content"
-                            spanMd={5}
-                            offsetMd={offset}
-                            spanLg={5}
-                            offsetLg={offset}
-                            spanXl={5}
-                            offsetXl={offset}
-                          >
-                            <div className="aci-Section__faq-content-question">{item.question}</div>
-                            <div className="aci-Section__faq-content-answer">{item.answer}</div>
-                          </Column>
-                        </>
-                      );
-                    })}
-                  </Row>
                 </Column>
               </Row>
             </section>

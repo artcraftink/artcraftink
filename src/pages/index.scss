@@ -84,40 +84,9 @@
     }
   }
 
-  &__faq {
-    min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-    min-height: calc(var(--vh, 1vh) * 100);
-
-    background-color: rgba($color: $cl-black, $alpha: 0.8);
-
-    &-title {
-      font: 300 $font-size-title-2 $font-family-title;
-      letter-spacing: 0.1em;
-      padding-bottom: 30px;
-    }
-
-    &-content {
-      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-      -moz-box-sizing: border-box; /* Firefox, other Gecko */
-      box-sizing: border-box; /* Opera/IE 8+ */
-      padding: 20px 0;
-      align-self: flex-start;
-
-      &-question {
-        font-size: $font-size-large;
-        font-weight: 400;
-        padding-bottom: 10px;
-        text-align: left;
-      }
-      &-answer {
-        font-size: $font-size-medium;
-        text-align: justify;
-      }
-    }
-  }
-
   &__contact {
     font-size: $font-size-small;
+    background-color: rgba($color: $cl-black, $alpha: 0.8);
 
     &-title {
       font: 300 $font-size-title-2 $font-family-title;
@@ -164,7 +133,6 @@
     min-height: calc(var(--vh, 1vh) * 100);
 
     font-size: $font-size-small;
-    background-color: rgba($color: $cl-black, $alpha: 0.8);
 
     &-title {
       font: 300 $font-size-title-2 $font-family-title;
