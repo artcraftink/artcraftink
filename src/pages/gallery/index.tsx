@@ -3,9 +3,9 @@ import Img, { FluidObject } from 'gatsby-image';
 import * as React from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import { chunk } from 'lodash';
 
 import { Column, Row } from '../../components/grid';
-
 import { Page } from '../../components/page';
 import './index.scss';
 
@@ -34,7 +34,7 @@ const Gallery = () => {
             relativePath
             name
             childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 800) {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -68,29 +68,33 @@ const Gallery = () => {
   const nextIndex = (galleryIndex + imageSources.length + 1) % imageSources.length;
 
   const renderImages = () => {
-    return data.images.edges.map((edge, index) => {
-      const imageNode = edge.node;
+    let numberOfChunks = Math.ceil(data.images.edges.length / 4);
+    return chunk(data.images.edges, numberOfChunks).map((imageChunk, chunkIndex) => {
       return (
-        <Column key={index} spanXl={3} spanLg={4} spanMd={6} spanSm={12}>
-          <div
-            className="aci-Gallery__item"
-            onClick={() => {
-              setIsGalleryOpen(true);
-              setGalleryIndex(index);
-            }}
-          >
-            <div className="aci-Gallery__image">
-              <Img
-                alt={imageNode.name}
-                fluid={imageNode.childImageSharp.fluid}
-                imgStyle={{ objectFit: 'contain' }}
-                fadeIn={true}
-              />
-              <div className="aci-Gallery__image-overlay">
-                <div className="aci-Gallery__image-overlay-text">{imageNode.name}</div>
+        <Column key={chunkIndex} spanXl={3} spanLg={6} spanMd={6} spanSm={12}>
+          {imageChunk.map((edge, imageIndex) => {
+            const imageNode = edge.node;
+            return (
+              <div
+                key={chunkIndex * numberOfChunks + imageIndex}
+                className="aci-Gallery__image"
+                onClick={() => {
+                  setIsGalleryOpen(true);
+                  setGalleryIndex(chunkIndex * numberOfChunks + imageIndex);
+                }}
+              >
+                <Img
+                  alt={imageNode.name}
+                  fluid={imageNode.childImageSharp.fluid}
+                  imgStyle={{ objectFit: 'contain' }}
+                  fadeIn={true}
+                />
+                <div className="aci-Gallery__image-overlay">
+                  <div className="aci-Gallery__image-overlay-text">{imageNode.name}</div>
+                </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </Column>
       );
     });

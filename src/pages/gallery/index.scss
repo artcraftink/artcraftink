@@ -6,17 +6,12 @@
   padding: 10%;
   background-color: $cl-black;
 
-  &__item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
-
   &__image {
-    border: solid 0.5px $cl-black;
-    min-height: 300px;
+    position: relative;
+    min-height: 100px;
     min-width: 300px;
+    border: solid 0.5px $cl-black;
+    cursor: pointer;
 
     &-overlay {
       position: absolute;
