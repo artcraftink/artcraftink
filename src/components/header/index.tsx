@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { SiteMetadata } from '../../data';
 
 import './index.scss';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // interface ImgData {
@@ -47,44 +47,89 @@ export const Header = (_props: HeaderProps) => {
       <nav id="nav">
         <ul>
           <li className="special">
-            <a
-              className="menuToggle"
-              onClick={() => {
-                setIsMenuOpen(true);
-              }}
-            >
-              <FontAwesomeIcon icon={faBars} />
-            </a>
+            {!isMenuOpen && (
+              <a
+                className="menuToggle"
+                onClick={() => {
+                  setIsMenuOpen(true);
+                }}
+              >
+                <FontAwesomeIcon icon={faBars} />
+              </a>
+            )}
             <div className={classNames('menu', isMenuOpen && 'menu-open')}>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link
+                    to="/#home"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <a href="#artist">Artist</a>
+                  <Link
+                    to="/#artist"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Artist
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/gallery">Gallery</Link>
+                  <Link
+                    to="/gallery"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Gallery
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/faq">FAQ</Link>
+                  <Link
+                    to="/faq"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    FAQ
+                  </Link>
                 </li>
                 <li>
-                  <a href="#contact">Contact</a>
+                  <Link
+                    to="/#contact"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Contact
+                  </Link>
                 </li>
                 <li>
-                  <a href="#location">Location</a>
+                  <Link
+                    to="/#location"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Location
+                  </Link>
                 </li>
               </ul>
-              <a
-                className="close"
-                onClick={() => {
-                  console.log('close');
-                  setIsMenuOpen(false);
-                }}
-              >
-                x
-              </a>
+              {isMenuOpen && (
+                <a
+                  className="close"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </a>
+              )}
             </div>
           </li>
         </ul>

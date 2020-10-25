@@ -45,3 +45,15 @@ main {
 footer {
   flex-shrink: 0;
 }
+
+@media only screen and (max-width: $screen__bp-sm) {
+  body {
+    font-size: $font-size-base-sm;
+  }
+}
+
+@media only screen and (max-width: $screen__bp-md) {
+  body {
+    font-size: $font-size-base-md;
+  }
+}
