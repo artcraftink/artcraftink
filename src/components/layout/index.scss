@@ -30,11 +30,15 @@ a {
 }
 
 .aci-PageWrapper {
+  height: 100%;
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('../../images/banner.jpg');
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 main {
@@ -44,16 +48,4 @@ main {
 
 footer {
   flex-shrink: 0;
-}
-
-@media only screen and (max-width: $screen__bp-sm) {
-  body {
-    font-size: $font-size-base-sm;
-  }
-}
-
-@media only screen and (max-width: $screen__bp-md) {
-  body {
-    font-size: $font-size-base-md;
-  }
 }
