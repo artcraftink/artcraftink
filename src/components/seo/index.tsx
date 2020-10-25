@@ -7,57 +7,87 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { SiteMetadata } from '../../data';
+import { useStaticQuery, graphql } from 'gatsby';
+import Facebook from './facebook';
+import Twitter from './twitter';
+import Google from './google';
 
-interface SEOProps {
+export interface SEOProps {
   title?: string;
   description?: string;
   lang?: string;
-  meta?: JSX.IntrinsicElements['meta'][];
-  siteMetadata: SiteMetadata;
+  path?: string;
+  imageSrc?: string;
 }
 
-export const SEO = ({ title, description, lang = 'en', meta = [], siteMetadata }: SEOProps) => {
-  const metaDescription = description || siteMetadata.description;
-  const metaTitle = title || siteMetadata.title;
+interface SiteDataProps {
+  site: {
+    siteMetadata: {
+      title: string;
+      description: string;
+      author: string;
+      lang: string;
+      keywords: string[];
+      siteUrl: string;
+    };
+  };
+  logo: {
+    childImageSharp: {
+      fluid: {
+        originalImg: string;
+      };
+    };
+  };
+}
+
+export const SEO = ({ title = '', description = '', lang = 'en', path = '', imageSrc }: SEOProps) => {
+  const { site, logo } = useStaticQuery<SiteDataProps>(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            author
+            lang
+            keywords
+            siteUrl
+          }
+        }
+        logo: file(relativePath: { eq: "logo/artcraftink-icon.jpg" }) {
+          childImageSharp {
+            fluid {
+              originalImg
+            }
+          }
+        }
+      }
+    `,
+  );
+
+  const metaDescription = description || site.siteMetadata.description;
+  const metaUrl = `${site.siteMetadata.siteUrl}${path}`;
+  const logoImage = `${site.siteMetadata.siteUrl}${logo.childImageSharp.fluid.originalImg}`;
+  const metaImage = imageSrc ? `${site.siteMetadata.siteUrl}${imageSrc}` : logoImage;
+  const isArticle = !!imageSrc;
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang: lang,
-      }}
-      title={metaTitle}
-      titleTemplate={`%s | ${siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: metaTitle,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:title`,
-          content: metaTitle,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta as any)}
-    />
+    <>
+      <Helmet title={title} titleTemplate={`%s | ${site.siteMetadata.title}`}>
+        <html lang={lang} />
+        <meta name="description" content={metaDescription} />
+        <meta name="image" content={metaImage} />
+      </Helmet>
+      <Facebook
+        desc={metaDescription}
+        image={metaImage}
+        title={title}
+        type={isArticle ? 'article' : 'website'}
+        url={metaUrl}
+        locale={lang}
+      />
+      <Twitter title={title} image={metaImage} desc={metaDescription} />
+      <Google />
+    </>
   );
 };

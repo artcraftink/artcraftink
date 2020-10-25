@@ -9,7 +9,10 @@ dotenv.config({
 module.exports = {
   siteMetadata: {
     title: `Artcraft Ink`,
+    siteUrl: 'https://www.artcraftink.com',
     description: `artcraftink.com`,
+    keywords: ['tattoo', 'art', 'ink', 'tattoo studio', 'tattoo artist', 'black and white'],
+    lang: 'en',
     author: `@gpeshans`,
     addressLine1: '47 Marshal Tito',
     addressLine2: '2330 Berovo, Macedonia',
@@ -22,7 +25,7 @@ module.exports = {
       zoom: 15,
     },
     phone: '+389 78 933 454',
-    email: 'bubotomic@gmail.com',
+    email: 'studioartcraftink@gmail.com',
     instagram: 'https://www.instagram.com/artcraftink',
     facebook: 'https://www.facebook.com/artcraftink',
     artistName: 'Ljubomir Tomikj',

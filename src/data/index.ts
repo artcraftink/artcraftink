@@ -3,7 +3,10 @@
  */
 export interface SiteMetadata {
   title: string;
+  siteUrl: string;
   description: string;
+  keywords: string[];
+  lang: string;
   addressLine1: string;
   addressLine2: string;
   map: {

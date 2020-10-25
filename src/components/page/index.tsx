@@ -63,7 +63,7 @@ export class Page extends React.Component<PageProps> {
           const siteMetadata = (data as any).site.siteMetadata as SiteMetadata;
           return (
             <Layout siteMetadata={siteMetadata}>
-              <SEO siteMetadata={siteMetadata} />
+              <SEO {...siteMetadata} />
               <ContainerFluid className={this.props.className}>
                 {this.props.children({
                   siteMetadata,
