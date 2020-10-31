@@ -68,19 +68,19 @@ const Gallery = () => {
   const nextIndex = (galleryIndex + imageSources.length + 1) % imageSources.length;
 
   const renderImages = () => {
-    let numberOfChunks = Math.ceil(data.images.edges.length / 4);
-    return chunk(data.images.edges, numberOfChunks).map((imageChunk, chunkIndex) => {
+    let chunkSize = Math.ceil(data.images.edges.length / 4);
+    return chunk(data.images.edges, chunkSize).map((imageChunk, chunkIndex) => {
       return (
         <Column key={chunkIndex} spanXl={3} spanLg={6} spanMd={6} spanSm={12}>
           {imageChunk.map((edge, imageIndex) => {
             const imageNode = edge.node;
             return (
               <div
-                key={chunkIndex * numberOfChunks + imageIndex}
+                key={chunkIndex * chunkSize + imageIndex}
                 className="aci-Gallery__image"
                 onClick={() => {
                   setIsGalleryOpen(true);
-                  setGalleryIndex(chunkIndex * numberOfChunks + imageIndex);
+                  setGalleryIndex(chunkIndex * chunkSize + imageIndex);
                 }}
               >
                 <Img
@@ -106,7 +106,9 @@ const Gallery = () => {
         <>
           <Row className="aci-Gallery">
             <Column className="aci-Gallery__title">Gallery</Column>
-            <Row>{renderImages()}</Row>
+            <Column>
+              <Row>{renderImages()}</Row>
+            </Column>
           </Row>
           {isGalleryOpen && (
             <Lightbox
