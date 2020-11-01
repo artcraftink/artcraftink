@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gpeshans/artcraftink.svg?branch=master)](https://travis-ci.org/gpeshans/artcraftink)
+[![Build Status](https://travis-ci.org/artcraftink/artcraftink.svg?branch=master)](https://travis-ci.org/artcraftink/artcraftink)
 
 # artcraftink.com
 
