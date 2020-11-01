@@ -63,13 +63,13 @@
     "tsc": "tsc",
     "lint": "eslint --ext .ts,.tsx src/",
     "lint:fix": "yarn lint --fix",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/gpeshans/artcraftink.git"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/artcraftink/artcraftink.git"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gpeshans/artcraftink"
+    "url": "https://github.com/artcraftink/artcraftink"
   },
   "bugs": {
-    "url": "https://github.com/gpeshans/artcraftink/issues"
+    "url": "https://github.com/artcraftink/artcraftink/issues"
   }
 }
