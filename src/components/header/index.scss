@@ -53,6 +53,7 @@
         -webkit-overflow-scrolling: touch;
         background: $cl-black;
         color: $cl-primary;
+        border-left: 1px solid $cl-highlight-dark;
         z-index: 901;
 
         a.close {

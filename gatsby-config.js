@@ -15,7 +15,7 @@ module.exports = {
     lang: 'en',
     author: `@gpeshans`,
     addressLine1: '47 Marshal Tito',
-    addressLine2: '2330 Berovo, Macedonia',
+    addressLine2: 'Berovo, Macedonia',
     map: {
       apiKey: process.env.GOOGLE_MAPS_API_KEY,
       center: {

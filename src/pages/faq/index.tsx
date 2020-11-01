@@ -27,7 +27,9 @@ const FAQ = () => (
                     offsetXl={offset}
                   >
                     <div className="aci-Faq__content-question">{item.question}</div>
-                    <div className="aci-Faq__content-answer">{item.answer}</div>
+                    <div className="aci-Faq__content-answer">
+                      <p>{item.answer}</p>
+                    </div>
                   </Column>
                 </>
               );

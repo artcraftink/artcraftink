@@ -72,7 +72,7 @@ const IndexPage = () => {
                 <Column className="aci-Section__artist-row aci-Section__artist-name">
                   {data.siteMetadata.artistName}
                 </Column>
-                <Column spanLg={10} spanXl={8} className="aci-Section__artist-row aci-Section__artist-bio">
+                <Column spanLg={10} spanXl={10} className="aci-Section__artist-row aci-Section__artist-bio">
                   <p>{data.siteMetadata.artistBio}</p>
                 </Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
@@ -85,7 +85,7 @@ const IndexPage = () => {
             <section id="contact">
               <Row className="aci-Section aci-Section__contact">
                 <Column className="aci-Section__contact-title">Contact</Column>
-                <Column className="aci-Section__contact-info" spanMd={6} spanLg={5} spanXl={4}>
+                <Column className="aci-Section__contact-info" spanSm={12} spanMd={6} spanLg={5} spanXl={5}>
                   <Row>
                     <Column className="aci-Section__contact-info-title">Find us</Column>
                   </Row>
@@ -117,7 +117,7 @@ const IndexPage = () => {
                     </Column>
                   </Row>
                 </Column>
-                <Column className="aci-Section__contact-form" spanMd={6} spanLg={5} spanXl={4}>
+                <Column className="aci-Section__contact-form" spanSm={12} spanMd={6} spanLg={5} spanXl={5}>
                   <form
                     name="contact"
                     method="post"
@@ -161,7 +161,7 @@ const IndexPage = () => {
             <section id="location">
               <Row className="aci-Section aci-Section__location">
                 <Column className="aci-Section__location-title">Location</Column>
-                <Column className="aci-Section__location-map" spanLg={10} spanXl={8}>
+                <Column className="aci-Section__location-map" spanLg={10} spanXl={10}>
                   <div className="aci-Section__location-map-wrapper">
                     <GoogleMap
                       bootstrapURLKeys={{ key: data.siteMetadata.map.apiKey }}
