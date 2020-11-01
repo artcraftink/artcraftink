@@ -1,17 +1,17 @@
 @import '../../styles/variables.scss';
 
 .aci-Footer {
-  padding: 50px 15%;
+  padding: 50px 5%;
   background: $cl-black;
   word-wrap: break-word;
   text-align: center;
 
   &__section {
-    padding-bottom: 30px;
+    padding-bottom: 65px;
   }
 
   &__section-title {
-    font: 400 $font-size-title-3 $font-family-title;
+    font-size: $font-size-title-3;
     text-transform: uppercase;
   }
 

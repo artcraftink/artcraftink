@@ -11,7 +11,7 @@
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box; /* Opera/IE 8+ */
-  padding: 10%;
+  padding: 150px 10%;
 
   background-color: $cl-black;
 
@@ -23,7 +23,7 @@
     background: transparent;
 
     &-title {
-      font: 300 $font-size-title $font-family-title;
+      font-size: $font-size-title;
       text-transform: uppercase;
     }
 
@@ -50,11 +50,11 @@
 
   &__artist {
     &-row {
-      padding-bottom: 30px;
+      padding-bottom: 65px;
     }
 
     &-title {
-      font: 300 $font-size-title-2 $font-family-title;
+      font-size: $font-size-title-2;
       letter-spacing: 0.1em;
     }
 
@@ -75,7 +75,7 @@
     }
 
     &-name {
-      font: 400 $font-size-title-3 $font-family-title;
+      font-size: $font-size-title-3;
       letter-spacing: 0.1em;
     }
 
@@ -89,9 +89,9 @@
     background-color: rgba($color: $cl-black, $alpha: 0.8);
 
     &-title {
-      font: 300 $font-size-title-2 $font-family-title;
+      font-size: $font-size-title-2;
       letter-spacing: 0.1em;
-      padding-bottom: 30px;
+      padding-bottom: 65px;
     }
 
     &-info {
@@ -129,15 +129,12 @@
   }
 
   &__location {
-    min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-    min-height: calc(var(--vh, 1vh) * 100);
-
     font-size: $font-size-small;
 
     &-title {
-      font: 300 $font-size-title-2 $font-family-title;
+      font-size: $font-size-title-2;
       letter-spacing: 0.1em;
-      padding-bottom: 30px;
+      padding-bottom: 65px;
     }
 
     &-map {

@@ -3,7 +3,7 @@
 .aci-Faq {
   text-align: center;
   word-wrap: break-word;
-  padding: 10%;
+  padding: 150px 10%;
   background-color: $cl-black;
 
   &__content {
@@ -26,8 +26,8 @@
   }
 
   &__title {
-    font: 300 $font-size-title $font-family-title;
+    font-size: $font-size-title-2;
     text-transform: uppercase;
-    padding-bottom: 5%;
+    padding-bottom: 65px;
   }
 }

@@ -6,7 +6,6 @@
   color: $cl-primary;
   padding: 16px 32px;
   text-align: center;
-  text-decoration: underline;
   display: inline-block;
   font-size: $font-size-small;
   font-weight: normal;
@@ -18,5 +17,4 @@
 .aciButton:hover {
   background-color: $cl-primary;
   color: $cl-highlight-dark;
-  text-decoration: none;
 }

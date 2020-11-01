@@ -73,7 +73,7 @@ const IndexPage = () => {
                   {data.siteMetadata.artistName}
                 </Column>
                 <Column spanLg={10} spanXl={8} className="aci-Section__artist-row aci-Section__artist-bio">
-                  {data.siteMetadata.artistBio}
+                  <p>{data.siteMetadata.artistBio}</p>
                 </Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-gallery-link">
                   <Button onClick={() => navigateToGallery()} text="View gallery"></Button>
