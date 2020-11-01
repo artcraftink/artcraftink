@@ -8,7 +8,7 @@ dotenv.config({
 
 module.exports = {
   siteMetadata: {
-    title: `Artcraft Ink`,
+    title: `ArtCraft Ink`,
     siteUrl: 'https://www.artcraftink.com',
     description: `artcraftink.com`,
     keywords: ['tattoo', 'art', 'ink', 'tattoo studio', 'tattoo artist', 'black and white'],
