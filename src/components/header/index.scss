@@ -27,7 +27,7 @@
       top: 0;
       right: 0;
       position: absolute;
-      padding: 10px 30px;
+      padding: 30px 30px;
       box-sizing: border-box;
       display: block;
     }
@@ -36,6 +36,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      padding-top: 30px;
       white-space: nowrap;
 
       .menu {
@@ -60,7 +61,7 @@
           top: 0;
           right: 0;
           position: absolute;
-          padding: 10px 30px;
+          padding: 30px 30px;
           box-sizing: border-box;
           display: block;
         }

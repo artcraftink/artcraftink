@@ -5,40 +5,39 @@ interface Faq {
 
 export const faq: Faq[] = [
   {
-    question: 'How do i look after my tattoo?',
-    answer:
-      'No need to worry, we will go through everything with you while in the shop. We have a n aftercare sheet we will supply as well as plastic wrap, tape and aftercare ointment (which we offer for a little extra kuai). You are in good hands, we will not leave you hanging dry.',
+    question: 'When should I not get tattooed?',
+    answer: `You should NOT get tattooed when you are: PREGNANT, Pre-Surgery or Post-Surgery(weak immunity), have blood related diseases, serious heart conditions, serious skin conditions, when you’re sunburned, drunk or high.`,
   },
   {
-    question: 'Can you remove it for me?',
-    answer:
-      'Sorry but no! We can offer to cover your tattoo up with something you’ll love or give it a good ol’ refreshment. Our highly experienced artists here at Shanghai Tattoo are masters of cover ups and that tattoo you once regretted may end up being the tattoo you always wanted and now cant stop looking at because you love so much.',
+    question: 'Is the tattoo process safe and hygienic?',
+    answer: `Tattoos are safe whenever done properly and with the right equipment and knowledge about cross contamination. In our studio we ALWAYS make sure the hygiene is at the HIGHEST level. Most of the tattoo equipment we use is for single-use only and it is disposed after each use. The rest of the studio is cleaned thoroughly after each client.`,
   },
   {
     question: 'Do tattoos hurt?',
-    answer: 'Yes!',
+    answer: `Yes, tattoos do hurt. However, people may experience different levels of pain, so it's hard to predict what the level of pain would be. At the end, it's a personal experience.`,
   },
   {
-    question: "Can i get a tattoo if i'm under 18?",
-    answer: 'No, Be patient. Tattoos are forever so wait till you are of age.',
+    question: "Can I get a tattoo if I'm under 18?",
+    answer:
+      'By law, you are not allowed to get a tattoo if you are under 16 years old. If you are 16-to-18 years old you can get a tattoo only with a written consent from your parent or guardian. So, if you really like tattoos, use that time to choose your ideal tattoo.',
   },
   {
     question: 'How should I prepare for my tattoo session?',
     answer:
-      'Make sure you are well rested, well hydrated, and have eaten recently. Aside from that, take a shower, charge your phone or tablet up to full, and don’t bring in your 50 closest friends (1-2 are fine).',
+      'Make sure you are rest well, eat well, and stay hydrated. Aside from that, take a shower, shave the area, take a fully charged phone or tablet for entertainment and if you need company, bring only your closest friend.',
   },
   {
-    question: 'When should I not get tattooed?',
+    question: 'How do I take care of my new tattoo?',
     answer:
-      'You should not get tattooed when you are: Drunk, High, Pregnant, Pre-Surgery, Post-Surgery, When you don’t know what you want, When you can’t afford it, When you’re sunburned, When you haven’t showered, When you have your kids with you, If you don’t have an ID, Being pressured into it, When you’ve been told by us that your idea is bad',
+      'The process of taking care of your new tattoo is really simple and important part of the whole process and is a must in order for your tattoos to look good. We will discuss the few simple steps of aftercare, right after we finish the tattoo. Most importantly: NO baths, NO swimming, NO saunas, NO sun tanning, NO scratching or NO touching the tattoo with dirty hands, for AT LEAST 10 days. Sun tanning should be avoided for at least over a month and applying sun protection lotion on the tattoo is always a great idea.',
   },
   {
     question: 'Is tanning OK when you have tattoos?',
     answer:
-      'It might be really tempting to get some rays during the summer months or hit up the tanning salon, but before you ruin your tattoo, please read about tattoos and tanning.',
+      'During the summer, avoiding the sun for longer period might be difficult, but is a MUST if you have a brand new tattoo. Sunburns would probably ruin your new tattoo. And, even when healed, long sunlight exposure can have bad effects on a tattoo, so applying sun protection lotion is always a good idea when exposing it to direct sunlight for a long period of time.',
   },
   {
     question: 'What brand of ink do you use?',
-    answer: 'If you have allergies to specific ingredients or materials, now is the time to bring them up.',
+    answer: `We've been using Nocturnal tattoo black ink for some time now and haven't had a single problem so far. But if you have allergies to specific ingredients, you should inform us about it.`,
   },
 ];

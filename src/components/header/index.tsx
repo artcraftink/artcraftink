@@ -54,7 +54,7 @@ export const Header = (_props: HeaderProps) => {
                   setIsMenuOpen(true);
                 }}
               >
-                <FontAwesomeIcon icon={faBars} />
+                <FontAwesomeIcon icon={faBars} size="2x" />
               </a>
             )}
             <div className={classNames('menu', isMenuOpen && 'menu-open')}>
@@ -127,7 +127,7 @@ export const Header = (_props: HeaderProps) => {
                     setIsMenuOpen(false);
                   }}
                 >
-                  <FontAwesomeIcon icon={faTimes} />
+                  <FontAwesomeIcon icon={faTimes} size="2x" />
                 </a>
               )}
             </div>

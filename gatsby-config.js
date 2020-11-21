@@ -29,11 +29,7 @@ module.exports = {
     instagram: 'https://www.instagram.com/artcraftink',
     facebook: 'https://www.facebook.com/artcraftink',
     artistName: 'Ljubomir Tomikj',
-    artistBio: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-    deserunt mollit anim id est laborum.`,
+    artistBio: `I have been drawing for as long as I can remember and I have always loved creating art, learning new things about it and experimenting. I got into tattooing about 4 years ago. I consider it a really special form of art due to the connection between the artist and the client and the amazing level of trust that comes with it. My favorite style is blackwork and all other styles closely related to it. It's mainly a mix of linework, whipshading and dotwork. With each piece, I aspire to create something unique and I always try to do my best. Every tattoo is a unique experience for me. I love my work!`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
