@@ -71,7 +71,7 @@ const Gallery = () => {
     let chunkSize = Math.ceil(data.images.edges.length / 4);
     return chunk(data.images.edges, chunkSize).map((imageChunk, chunkIndex) => {
       return (
-        <Column key={chunkIndex} spanXl={3} spanLg={6} spanMd={6} spanSm={12}>
+        <Column key={chunkIndex} spanXl={3} spanLg={4} spanMd={6} spanSm={12}>
           {imageChunk.map((edge, imageIndex) => {
             const imageNode = edge.node;
             return (
