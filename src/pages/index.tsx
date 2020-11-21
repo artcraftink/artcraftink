@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { graphql, navigate, useStaticQuery } from 'gatsby';
+import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
 import Img, { FixedObject } from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -74,12 +74,12 @@ const IndexPage = () => {
                 <Column className="aci-Section__home-title">ArtCraft Ink</Column>
                 <Column className="aci-Section__home-subtitle">Tattoo Studio</Column>
                 <Column className="aci-Section__home-artist">
-                  <a href="#artist">{data.siteMetadata.artistName}</a>
+                  <Link to="/#artist">{data.siteMetadata.artistName}</Link>
                 </Column>
                 <Column className="aci-Section__home-scroll-down">
-                  <a href="#artist">
+                  <Link to="/#artist">
                     <FontAwesomeIcon icon={faChevronDown} size="3x" className="aci-Section__home-scroll-down-icon" />
-                  </a>
+                  </Link>
                 </Column>
               </Row>
             </section>
@@ -115,10 +115,10 @@ const IndexPage = () => {
                     <Column className="aci-Section__contact-info-title">Find us</Column>
                   </Row>
                   <Row>
-                    <a href="#location">
+                    <Link to="/#location">
                       <Column className="aci-Section__contact-info-value">{data.siteMetadata.addressLine1}</Column>
                       <Column className="aci-Section__contact-info-value">{data.siteMetadata.addressLine2}</Column>
-                    </a>
+                    </Link>
                   </Row>
                   <Row>
                     <Column className="aci-Section__contact-info-title">Contact us</Column>
