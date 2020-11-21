@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.aci-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  word-wrap: break-word;
+
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+  padding: 150px 10%;
+
+  height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+
+  background-color: $cl-black;
+
+  &__content {
+    font-size: $font-size-medium;
+  }
+
+  &__title {
+    font-size: $font-size-title-2;
+    text-transform: uppercase;
+    padding-bottom: 65px;
+  }
+}
