@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
 import classNames from 'classnames';
-// import { useStaticQuery, graphql } from 'gatsby';
-// import Img, { FluidObject } from 'gatsby-image';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img, { FixedObject } from 'gatsby-image';
 
 import { SiteMetadata } from '../../data';
 
@@ -10,40 +10,39 @@ import './index.scss';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// interface ImgData {
-//   logo: {
-//     childImageSharp: {
-//       fluid: FluidObject;
-//     };
-//   };
-// }
+interface ImgData {
+  image: {
+    childImageSharp: {
+      fixed: FixedObject;
+    };
+  };
+}
 
 interface HeaderProps {
   siteMetadata: SiteMetadata;
 }
 
-// TODO: GP - fix the sizing of the logo
 export const Header = (_props: HeaderProps) => {
-  // const data = useStaticQuery<ImgData>(graphql`
-  //   query {
-  //     logo: file(relativePath: { eq: "logo/artcraftink-icon.jpg" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 100, maxHeight: 100) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  const logo = useStaticQuery<ImgData>(graphql`
+    query {
+      image: file(relativePath: { eq: "logo/artcraftink-transparent.png" }) {
+        childImageSharp {
+          fixed(width: 100, height: 100) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
     <header className="aci-Header">
-      {/* <Img
-        fluid={data.logo.childImageSharp.fluid}
-        imgStyle={{ objectFit: 'contain', objectPosition: 'center top' }}
-        fadeIn={true}
-      /> */}
+      <div className="aci-Header__logo">
+        <Link to="/#home">
+          <Img fixed={logo.image.childImageSharp.fixed} imgStyle={{ objectFit: 'contain' }} fadeIn={true} />
+        </Link>
+      </div>
       <nav id="nav">
         <ul>
           <li className="special">

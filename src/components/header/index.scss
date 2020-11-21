@@ -12,6 +12,12 @@
   background: transparent;
   z-index: 900;
 
+  &__logo {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+  }
+
   #nav {
     position: absolute;
     right: 0;
