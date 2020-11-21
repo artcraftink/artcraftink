@@ -2,28 +2,26 @@
 
 .aci-Header {
   box-sizing: border-box;
-  display: flex;
   position: absolute;
   margin: 0 auto;
   top: 0;
   width: 100%;
   height: 150px;
-  padding: 0;
-  padding-right: 10%;
+  display: flex;
+  justify-content: space-between;
   background: transparent;
   z-index: 900;
 
   &__logo {
-    position: relative;
-    left: 30px;
-    top: 30px;
+    align-self: center;
+    padding-left: 30px;
   }
 
   #nav {
-    position: absolute;
-    right: 0;
-    top: 0;
-
+    display: block;
+    align-self: center;
+    padding-right: 30px;
+    padding-bottom: 30px;
     font-size: $font-size-medium;
 
     .special {
@@ -31,10 +29,8 @@
     }
 
     .menuToggle {
-      top: 0;
-      right: 0;
-      position: fixed;
-      padding: 30px 30px;
+      position: relative;
+      display: flex;
       box-sizing: border-box;
       display: block;
     }
@@ -43,7 +39,6 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      padding-top: 30px;
       white-space: nowrap;
 
       .menu {
@@ -53,7 +48,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        padding: 40px 30px;
+        padding: 60px 30px;
         box-sizing: border-box;
         transform: translateX(300px);
         overflow-y: auto;
@@ -68,7 +63,7 @@
           top: 0;
           right: 0;
           position: absolute;
-          padding: 30px 30px;
+          padding: 30px;
           box-sizing: border-box;
           display: block;
         }
