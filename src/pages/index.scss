@@ -58,11 +58,8 @@
     }
 
     &-image {
-      // TODO: GP
-      img {
-        width: 225px;
-        height: 225px;
-      }
+      max-width: 240px;
+      max-height: 360px;
     }
 
     &-gallery-link {

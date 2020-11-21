@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { navigate } from 'gatsby';
+import { graphql, navigate, useStaticQuery } from 'gatsby';
+import Img, { FixedObject } from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import GoogleMap from 'google-map-react';
@@ -11,6 +12,14 @@ import { Input } from '../components/input';
 import { Textarea } from '../components/textarea';
 import './index.scss';
 
+interface ImgData {
+  image: {
+    childImageSharp: {
+      fixed: FixedObject;
+    };
+  };
+}
+
 function encode(data: any) {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
@@ -19,6 +28,18 @@ function encode(data: any) {
 
 const IndexPage = () => {
   const [state, setState] = React.useState({});
+
+  const artistProfilePicture = useStaticQuery<ImgData>(graphql`
+    query {
+      image: file(relativePath: { eq: "artist-profile-picture.jpg" }) {
+        childImageSharp {
+          fixed(width: 240, height: 360) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
 
   const onChange = (event: any) => {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -67,7 +88,11 @@ const IndexPage = () => {
               <Row className="aci-Section aci-Section__artist">
                 <Column className="aci-Section__artist-row aci-Section__artist-title">Artist</Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-image">
-                  <img src="https://via.placeholder.com/225" />
+                  <Img
+                    fixed={artistProfilePicture.image.childImageSharp.fixed}
+                    imgStyle={{ objectFit: 'contain' }}
+                    fadeIn={true}
+                  />
                 </Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-name">
                   {data.siteMetadata.artistName}
