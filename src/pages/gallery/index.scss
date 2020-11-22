@@ -13,6 +13,10 @@
     border: solid 0.5px $cl-black;
     cursor: pointer;
 
+    @media all and (max-width: $screen__bp-md *1px) {
+      margin: 15px 0;
+    }
+
     &-overlay {
       position: absolute;
       top: 0;
