@@ -3,7 +3,6 @@ import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
 import Img, { FixedObject } from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import Map from '../components/map';
 
 import { Row, Column } from '../components/grid';
 import { Page } from '../components/page';
@@ -188,7 +187,15 @@ const IndexPage = () => {
                 <Column className="aci-Section__location-title">Location</Column>
                 <Column className="aci-Section__location-map" spanLg={10} spanXl={10}>
                   <div className="aci-Section__location-map-wrapper">
-                    <Map siteMetadata={data.siteMetadata} />
+                    <iframe
+                      width="auto"
+                      height="auto"
+                      frameBorder="0"
+                      style={{ border: 0 }}
+                      scrolling="no"
+                      src={`https://www.google.com/maps/embed/v1/place?q=Marshal%20Tito%2047%2C%20Berovo%2C%20North%20Macedonia%20&key=${data.siteMetadata.map.apiKey}`}
+                      allowFullScreen
+                    ></iframe>
                   </div>
                 </Column>
               </Row>
