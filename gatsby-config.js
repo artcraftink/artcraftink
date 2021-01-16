@@ -19,10 +19,10 @@ module.exports = {
     map: {
       apiKey: process.env.GOOGLE_MAPS_API_KEY,
       center: {
-        lat: 41.7098,
-        lng: 22.8542478,
+        lat: 41.709826,
+        lng: 22.854816,
       },
-      zoom: 15,
+      zoom: 16,
     },
     phone: '+389 78 933 454',
     email: 'studioartcraftink@gmail.com',

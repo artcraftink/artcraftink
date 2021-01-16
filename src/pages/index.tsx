@@ -3,7 +3,7 @@ import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
 import Img, { FixedObject } from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import GoogleMap from 'google-map-react';
+import Map from '../components/map';
 
 import { Row, Column } from '../components/grid';
 import { Page } from '../components/page';
@@ -188,11 +188,7 @@ const IndexPage = () => {
                 <Column className="aci-Section__location-title">Location</Column>
                 <Column className="aci-Section__location-map" spanLg={10} spanXl={10}>
                   <div className="aci-Section__location-map-wrapper">
-                    <GoogleMap
-                      bootstrapURLKeys={{ key: data.siteMetadata.map.apiKey }}
-                      defaultCenter={data.siteMetadata.map.center}
-                      defaultZoom={data.siteMetadata.map.zoom}
-                    ></GoogleMap>
+                    <Map siteMetadata={data.siteMetadata} />
                   </div>
                 </Column>
               </Row>
