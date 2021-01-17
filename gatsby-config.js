@@ -61,8 +61,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.puzzlearchitecture.com/',
-        sitemap: 'https://www.puzzlearchitecture.com/sitemap.xml',
+        host: 'https://www.artcraftink.com/',
+        sitemap: 'https://www.artcraftink.com/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/', disallow: ['/thanks', '/404'] }],
       },
     },
