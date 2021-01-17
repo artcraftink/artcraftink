@@ -59,6 +59,46 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.puzzlearchitecture.com/',
+        sitemap: 'https://www.puzzlearchitecture.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/', disallow: ['/thanks', '/404'] }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/thanks`, `/404`],
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+  
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+        }`,
+        resolveSiteUrl: ({ site }) => {
+          //Alternatively, you may also pass in an environment variable (or any location) at the beginning of your `gatsby-config.js`.
+          return site.siteMetadata.siteUrl;
+        },
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.nodes.map((node) => {
+            return {
+              url: `${site.siteMetadata.siteUrl}${node.path}`,
+              changefreq: `weekly`,
+              priority: 0.7,
+            };
+          }),
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `artcraftink.com`,
