@@ -3,7 +3,6 @@ import Img, { FluidObject } from 'gatsby-image';
 import * as React from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import { chunk } from 'lodash';
 
 import { Column, Row } from '../../components/grid';
 import { Page } from '../../components/page';
@@ -25,10 +24,37 @@ export interface ImgData {
   };
 }
 
+const getImageName = (imageNodeName: string) => {
+  return imageNodeName.split('_')[1];
+};
+
+const generateImageChunks = (images: { node: ImageNode }[]) => {
+  const chunks: { node: ImageNode }[][] = [[], [], [], []];
+  let nth = 0;
+  for (let index = 0; index < images.length; index++) {
+    if (nth === 0) {
+      chunks[0].push(images[index]);
+    }
+    if (nth === 1) {
+      chunks[1].push(images[index]);
+    }
+    if (nth === 2) {
+      chunks[2].push(images[index]);
+    }
+    if (nth === 3) {
+      chunks[3].push(images[index]);
+      nth = 0;
+    } else {
+      nth++;
+    }
+  }
+  return chunks;
+};
+
 const Gallery = () => {
   const data = useStaticQuery<ImgData>(graphql`
     query {
-      images: allFile(filter: { relativeDirectory: { eq: "gallery" } }) {
+      images: allFile(filter: { relativeDirectory: { eq: "gallery" } }, sort: { fields: name, order: DESC }) {
         edges {
           node {
             relativePath
@@ -55,7 +81,7 @@ const Gallery = () => {
 
     if (imageEdge) {
       images.push({
-        title: imageNode.name,
+        title: getImageName(imageNode.name),
         node: imageNode,
       });
     }
@@ -68,29 +94,31 @@ const Gallery = () => {
   const nextIndex = (galleryIndex + imageSources.length + 1) % imageSources.length;
 
   const renderImages = () => {
-    let chunkSize = Math.ceil(data.images.edges.length / 4);
-    return chunk(data.images.edges, chunkSize).map((imageChunk, chunkIndex) => {
+    const chunkSize = Math.ceil(data.images.edges.length / 4);
+    return generateImageChunks(data.images.edges).map((imageChunk, chunkIndex) => {
       return (
         <Column key={chunkIndex} spanXl={3} spanLg={4} spanMd={6} spanSm={12}>
           {imageChunk.map((edge, imageIndex) => {
             const imageNode = edge.node;
+            const imageName = getImageName(imageNode.name);
+            const galleryIndex = chunkIndex * chunkSize + imageIndex;
             return (
               <div
-                key={chunkIndex * chunkSize + imageIndex}
+                key={galleryIndex}
                 className="aci-Gallery__image"
                 onClick={() => {
                   setIsGalleryOpen(true);
-                  setGalleryIndex(chunkIndex * chunkSize + imageIndex);
+                  setGalleryIndex(galleryIndex);
                 }}
               >
                 <Img
-                  alt={imageNode.name}
+                  alt={imageName}
                   fluid={imageNode.childImageSharp.fluid}
                   imgStyle={{ objectFit: 'contain' }}
                   fadeIn={true}
                 />
                 <div className="aci-Gallery__image-overlay">
-                  <div className="aci-Gallery__image-overlay-text">{imageNode.name}</div>
+                  <div className="aci-Gallery__image-overlay-text">{imageName}</div>
                 </div>
               </div>
             );
