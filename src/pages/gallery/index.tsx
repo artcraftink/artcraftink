@@ -7,6 +7,7 @@ import 'react-image-lightbox/style.css';
 
 import { Column, Row } from '../../components/grid';
 import { Page } from '../../components/page';
+import { ScreenSize, useScreenSize } from '../../helpers/useScreenSize';
 import './index.scss';
 
 export interface ImageNode {
@@ -29,27 +30,30 @@ const getImageName = (imageNodeName: string) => {
   return imageNodeName.split('_')[1];
 };
 
-const generateImageColumns = (images: { node: ImageNode }[]) => {
-  const chunks: { node: ImageNode }[][] = [[], [], [], []];
-  let nth = 0;
+const getNumberOfColumns = ({ isMobile, isTablet, isDesktop }: ScreenSize) => {
+  if (isMobile) {
+    return 1;
+  } else if (isTablet) {
+    return 2;
+  } else if (isDesktop) {
+    return 3;
+  } else {
+    return 4;
+  }
+};
+
+const generateImageColumns = (images: { node: ImageNode }[], numberOfColumns: number) => {
+  const columns: { node: ImageNode }[][] = [[], [], [], []];
+  let currentColumn = 0;
   for (let index = 0; index < images.length; index++) {
-    if (nth === 0) {
-      chunks[0].push(images[index]);
-    }
-    if (nth === 1) {
-      chunks[1].push(images[index]);
-    }
-    if (nth === 2) {
-      chunks[2].push(images[index]);
-    }
-    if (nth === 3) {
-      chunks[3].push(images[index]);
-      nth = 0;
+    columns[currentColumn].push(images[index]);
+    if (currentColumn === numberOfColumns - 1) {
+      currentColumn = 0;
     } else {
-      nth++;
+      currentColumn++;
     }
   }
-  return chunks;
+  return columns;
 };
 
 const Gallery = () => {
@@ -71,8 +75,10 @@ const Gallery = () => {
     }
   `);
 
-  const chunkSize = Math.ceil(data.images.edges.length / 4);
-  const imageColumnsToRender = generateImageColumns(data.images.edges);
+  const screenSize = useScreenSize();
+  const numberOfColumns = getNumberOfColumns(screenSize);
+  const columnsSize = Math.ceil(data.images.edges.length / numberOfColumns);
+  const imageColumnsToRender = generateImageColumns(data.images.edges, numberOfColumns);
   const galleryImages = flatten(imageColumnsToRender).map((image) => {
     return {
       title: getImageName(image.node.name),
@@ -93,7 +99,7 @@ const Gallery = () => {
           {imageChunk.map((edge, imageIndex) => {
             const imageNode = edge.node;
             const imageName = getImageName(imageNode.name);
-            const galleryIndex = chunkIndex * chunkSize + imageIndex;
+            const galleryIndex = chunkIndex * columnsSize + imageIndex;
             return (
               <div
                 key={galleryIndex}
