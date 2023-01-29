@@ -2,34 +2,26 @@ import { Link } from 'gatsby';
 import * as React from 'react';
 import classNames from 'classnames';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img, { FixedObject } from 'gatsby-image';
-
-import { SiteMetadata } from '../../data';
-
-import './index.scss';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import './index.scss';
 
 interface ImgData {
   image: {
     childImageSharp: {
-      fixed: FixedObject;
+      gatsbyImageData: IGatsbyImageData;
     };
   };
 }
 
-interface HeaderProps {
-  siteMetadata: SiteMetadata;
-}
-
-export const Header = (_props: HeaderProps) => {
+export const Header = () => {
   const logo = useStaticQuery<ImgData>(graphql`
-    query {
+    {
       image: file(relativePath: { eq: "logo/artcraftink-transparent.png" }) {
         childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(width: 100, height: 100, layout: FIXED)
         }
       }
     }
@@ -40,7 +32,11 @@ export const Header = (_props: HeaderProps) => {
     <header className="aci-Header">
       <div className="aci-Header__logo">
         <Link to="/#home">
-          <Img fixed={logo.image.childImageSharp.fixed} imgStyle={{ objectFit: 'contain' }} fadeIn={true} />
+          <GatsbyImage
+            alt="logo"
+            image={logo.image.childImageSharp.gatsbyImageData}
+            imgStyle={{ objectFit: 'contain' }}
+          />
         </Link>
       </div>
       <nav id="nav">

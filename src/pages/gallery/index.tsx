@@ -1,9 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
-import { flatten } from 'lodash';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import * as React from 'react';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import { Gallery as Slideshow, Item } from 'react-photoswipe-gallery';
+import 'photoswipe/dist/photoswipe.css';
 
 import { Column, Row } from '../../components/grid';
 import { Page } from '../../components/page';
@@ -14,7 +13,11 @@ export interface ImageNode {
   relativePath: string;
   name: string;
   childImageSharp: {
-    fluid: FluidObject;
+    gatsbyImageData: IGatsbyImageData;
+    original: {
+      width: number;
+      height: number;
+    };
   };
 }
 
@@ -58,15 +61,17 @@ const generateImageColumns = (images: { node: ImageNode }[], numberOfColumns: nu
 
 const Gallery = () => {
   const data = useStaticQuery<ImgData>(graphql`
-    query {
+    {
       images: allFile(filter: { relativeDirectory: { eq: "gallery" } }, sort: { fields: name, order: DESC }) {
         edges {
           node {
             relativePath
             name
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              gatsbyImageData(layout: FULL_WIDTH)
+              original {
+                width
+                height
               }
             }
           }
@@ -79,18 +84,6 @@ const Gallery = () => {
   const numberOfColumns = getNumberOfColumns(screenSize);
   const columnsSize = Math.ceil(data.images.edges.length / numberOfColumns);
   const imageColumnsToRender = generateImageColumns(data.images.edges, numberOfColumns);
-  const galleryImages = flatten(imageColumnsToRender).map((image) => {
-    return {
-      title: getImageName(image.node.name),
-      node: image.node,
-    };
-  });
-  const galleryImageSources = galleryImages.map((image) => image.node.childImageSharp.fluid.src);
-
-  const [galleryIndex, setGalleryIndex] = React.useState(0);
-  const [isGalleryOpen, setIsGalleryOpen] = React.useState(false);
-  const prevIndex = galleryIndex - (1 % galleryImageSources.length);
-  const nextIndex = (galleryIndex + galleryImageSources.length + 1) % galleryImageSources.length;
 
   const renderImages = () => {
     return imageColumnsToRender.map((imageChunk, chunkIndex) => {
@@ -100,25 +93,39 @@ const Gallery = () => {
             const imageNode = edge.node;
             const imageName = getImageName(imageNode.name);
             const galleryIndex = chunkIndex * columnsSize + imageIndex;
+            const originalSrc = imageNode.childImageSharp.gatsbyImageData.images.fallback?.src;
+            const placeholderSrc = imageNode.childImageSharp.gatsbyImageData.placeholder?.fallback;
+            const width = imageNode.childImageSharp.original.width;
+            const height = imageNode.childImageSharp.original.height;
             return (
-              <div
+              <Item
                 key={galleryIndex}
-                className="aci-Gallery__image"
-                onClick={() => {
-                  setIsGalleryOpen(true);
-                  setGalleryIndex(galleryIndex);
-                }}
+                caption={imageName}
+                original={originalSrc}
+                thumbnail={placeholderSrc}
+                width={width}
+                height={height}
               >
-                <Img
-                  alt={imageName}
-                  fluid={imageNode.childImageSharp.fluid}
-                  imgStyle={{ objectFit: 'contain' }}
-                  fadeIn={true}
-                />
-                <div className="aci-Gallery__image-overlay">
-                  <div className="aci-Gallery__image-overlay-text">{imageName}</div>
-                </div>
-              </div>
+                {({ ref, open }) => (
+                  <div
+                    ref={ref as React.MutableRefObject<HTMLDivElement>}
+                    className="aci-Gallery__image"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      open(e);
+                    }}
+                  >
+                    <GatsbyImage
+                      alt={imageName}
+                      imgStyle={{ objectFit: 'contain' }}
+                      image={imageNode.childImageSharp.gatsbyImageData}
+                    />
+                    <div className="aci-Gallery__image-overlay">
+                      <div className="aci-Gallery__image-overlay-text">{imageName}</div>
+                    </div>
+                  </div>
+                )}
+              </Item>
             );
           })}
         </Column>
@@ -128,28 +135,18 @@ const Gallery = () => {
 
   return (
     <Page>
-      {(_data) => (
+      {() => (
         <>
           <Row className="aci-Gallery">
             <Column className="aci-Gallery__title">Gallery</Column>
             <Column>
-              <Row>{renderImages()}</Row>
+              <Row>
+                <Slideshow options={{ showHideOpacity: true }} withCaption>
+                  {renderImages()}
+                </Slideshow>
+              </Row>
             </Column>
           </Row>
-          {isGalleryOpen && (
-            <Lightbox
-              mainSrc={galleryImageSources[galleryIndex]}
-              nextSrc={galleryImageSources[nextIndex]}
-              prevSrc={galleryImageSources[prevIndex]}
-              onCloseRequest={() => {
-                setIsGalleryOpen(false);
-              }}
-              onMovePrevRequest={() => setGalleryIndex(prevIndex)}
-              onMoveNextRequest={() => setGalleryIndex(nextIndex)}
-              imageTitle={galleryImages[galleryIndex].title}
-              imageLoadErrorMessage="Image loading failed! Try to reload."
-            />
-          )}
         </>
       )}
     </Page>

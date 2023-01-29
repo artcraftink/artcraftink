@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
-import Img, { FixedObject } from 'gatsby-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +14,7 @@ import './index.scss';
 interface ImgData {
   image: {
     childImageSharp: {
-      fixed: FixedObject;
+      gatsbyImageData: IGatsbyImageData;
     };
   };
 }
@@ -29,12 +29,10 @@ const IndexPage = () => {
   const [state, setState] = React.useState({});
 
   const artistProfilePicture = useStaticQuery<ImgData>(graphql`
-    query {
+    {
       image: file(relativePath: { eq: "artist-profile-picture.jpg" }) {
         childImageSharp {
-          fixed(width: 240, height: 360) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(width: 240, height: 360, layout: FIXED)
         }
       }
     }
@@ -87,10 +85,10 @@ const IndexPage = () => {
               <Row className="aci-Section aci-Section__artist">
                 <Column className="aci-Section__artist-row aci-Section__artist-title">Artist</Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-image">
-                  <Img
-                    fixed={artistProfilePicture.image.childImageSharp.fixed}
+                  <GatsbyImage
+                    alt="artist"
+                    image={artistProfilePicture.image.childImageSharp.gatsbyImageData}
                     imgStyle={{ objectFit: 'contain' }}
-                    fadeIn={true}
                   />
                 </Column>
                 <Column className="aci-Section__artist-row aci-Section__artist-name">

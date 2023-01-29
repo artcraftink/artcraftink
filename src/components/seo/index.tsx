@@ -6,11 +6,12 @@
  */
 
 import * as React from 'react';
-import { Helmet } from 'react-helmet';
+import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import Facebook from './facebook';
 import Twitter from './twitter';
 import Google from './google';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 export interface SEOProps {
   title?: string;
@@ -33,9 +34,7 @@ interface SiteDataProps {
   };
   logo: {
     childImageSharp: {
-      fluid: {
-        originalImg: string;
-      };
+      gatsbyImageData: IGatsbyImageData;
     };
   };
 }
@@ -43,7 +42,7 @@ interface SiteDataProps {
 export const SEO = ({ title = '', description = '', lang = 'en', path = '', imageSrc }: SEOProps) => {
   const { site, logo } = useStaticQuery<SiteDataProps>(
     graphql`
-      query {
+      {
         site {
           siteMetadata {
             title
@@ -56,9 +55,7 @@ export const SEO = ({ title = '', description = '', lang = 'en', path = '', imag
         }
         logo: file(relativePath: { eq: "logo/artcraftink-icon.jpg" }) {
           childImageSharp {
-            fluid {
-              originalImg
-            }
+            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
           }
         }
       }
@@ -67,7 +64,7 @@ export const SEO = ({ title = '', description = '', lang = 'en', path = '', imag
 
   const metaDescription = description || site.siteMetadata.description;
   const metaUrl = `${site.siteMetadata.siteUrl}${path}`;
-  const logoImage = `${site.siteMetadata.siteUrl}${logo.childImageSharp.fluid.originalImg}`;
+  const logoImage = `${site.siteMetadata.siteUrl}${logo.childImageSharp.gatsbyImageData.images.fallback?.src}`;
   const metaImage = imageSrc ? `${site.siteMetadata.siteUrl}${imageSrc}` : logoImage;
   const isArticle = !!imageSrc;
 
