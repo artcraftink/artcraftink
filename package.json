@@ -22,11 +22,11 @@
     "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.0",
-    "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "@typescript-eslint/parser": "^3.10.1",
-    "classnames": "^2.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "classnames": "^2.3.2",
     "dotenv": "^8.2.0",
-    "eslint": "^7.7.0",
+    "eslint": "^8.33.0",
     "eslint-plugin-react": "^7.20.6",
     "gatsby": "^2.30.3",
     "gatsby-image": "^2.9.0",
@@ -44,7 +44,8 @@
     "gh-pages": "^5.0.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.8.3",
-    "react-image-lightbox": "^5.1.4"
+    "react-image-lightbox": "^5.1.4",
+    "typescript": "^4.9.4"
   },
   "keywords": [
     "gatsby"
