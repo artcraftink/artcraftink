@@ -80,10 +80,8 @@ module.exports = {
             }
   
             allSitePage {
-              edges {
-                node {
-                  path
-                }
+              nodes {
+                path
               }
             }
           }
@@ -93,8 +91,9 @@ module.exports = {
           return site.siteMetadata.siteUrl;
         },
         resolvePages: ({ site, allSitePage }) => {
-          return allSitePage.edges.map(({ node }) => {
+          return allSitePage.nodes.map((node) => {
             return {
+              ...node,
               url: `${site.siteMetadata.siteUrl}${node.path}`,
               changefreq: `weekly`,
               priority: 0.7,
