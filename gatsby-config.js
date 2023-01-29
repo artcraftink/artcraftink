@@ -63,45 +63,11 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://www.artcraftink.com/',
-        sitemap: 'https://www.artcraftink.com/sitemap.xml',
+        sitemap: 'https://www.artcraftink.com/sitemap-index.xml',
         policy: [{ userAgent: '*', allow: '/', disallow: ['/thanks', '/404'] }],
       },
     },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        excludes: [`/thanks`, `/404`],
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
-  
-            allSitePage {
-              nodes {
-                path
-              }
-            }
-          }
-        `,
-        resolveSiteUrl: ({ site }) => {
-          //Alternatively, you may also pass in an environment variable (or any location) at the beginning of your `gatsby-config.js`.
-          return site.siteMetadata.siteUrl;
-        },
-        resolvePages: ({ site, allSitePage }) => {
-          return allSitePage.nodes.map((node) => {
-            return {
-              ...node,
-              url: `${site.siteMetadata.siteUrl}${node.path}`,
-              changefreq: `weekly`,
-              priority: 0.7,
-            };
-          });
-        },
-      },
-    },
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
