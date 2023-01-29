@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
+import { flatten } from 'lodash';
 import * as React from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
@@ -28,7 +29,7 @@ const getImageName = (imageNodeName: string) => {
   return imageNodeName.split('_')[1];
 };
 
-const generateImageChunks = (images: { node: ImageNode }[]) => {
+const generateImageColumns = (images: { node: ImageNode }[]) => {
   const chunks: { node: ImageNode }[][] = [[], [], [], []];
   let nth = 0;
   for (let index = 0; index < images.length; index++) {
@@ -70,32 +71,23 @@ const Gallery = () => {
     }
   `);
 
-  const images: {
-    title: string;
-    node: ImageNode;
-  }[] = [];
-
-  // map image nodes
-  data.images.edges.forEach((imageEdge) => {
-    const imageNode = imageEdge.node;
-
-    if (imageEdge) {
-      images.push({
-        title: getImageName(imageNode.name),
-        node: imageNode,
-      });
-    }
+  const chunkSize = Math.ceil(data.images.edges.length / 4);
+  const imageColumnsToRender = generateImageColumns(data.images.edges);
+  const galleryImages = flatten(imageColumnsToRender).map((image) => {
+    return {
+      title: getImageName(image.node.name),
+      node: image.node,
+    };
   });
+  const galleryImageSources = galleryImages.map((image) => image.node.childImageSharp.fluid.src);
 
-  const imageSources = images.map((image) => image.node.childImageSharp.fluid.src);
   const [galleryIndex, setGalleryIndex] = React.useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = React.useState(false);
-  const prevIndex = galleryIndex - (1 % imageSources.length);
-  const nextIndex = (galleryIndex + imageSources.length + 1) % imageSources.length;
+  const prevIndex = galleryIndex - (1 % galleryImageSources.length);
+  const nextIndex = (galleryIndex + galleryImageSources.length + 1) % galleryImageSources.length;
 
   const renderImages = () => {
-    const chunkSize = Math.ceil(data.images.edges.length / 4);
-    return generateImageChunks(data.images.edges).map((imageChunk, chunkIndex) => {
+    return imageColumnsToRender.map((imageChunk, chunkIndex) => {
       return (
         <Column key={chunkIndex} spanXl={3} spanLg={4} spanMd={6} spanSm={12}>
           {imageChunk.map((edge, imageIndex) => {
@@ -140,15 +132,15 @@ const Gallery = () => {
           </Row>
           {isGalleryOpen && (
             <Lightbox
-              mainSrc={imageSources[galleryIndex]}
-              nextSrc={imageSources[nextIndex]}
-              prevSrc={imageSources[prevIndex]}
+              mainSrc={galleryImageSources[galleryIndex]}
+              nextSrc={galleryImageSources[nextIndex]}
+              prevSrc={galleryImageSources[prevIndex]}
               onCloseRequest={() => {
                 setIsGalleryOpen(false);
               }}
               onMovePrevRequest={() => setGalleryIndex(prevIndex)}
               onMoveNextRequest={() => setGalleryIndex(nextIndex)}
-              imageTitle={images[galleryIndex].title}
+              imageTitle={galleryImages[galleryIndex].title}
               imageLoadErrorMessage="Image loading failed! Try to reload."
             />
           )}
