@@ -62,7 +62,7 @@ const generateImageColumns = (images: { node: ImageNode }[], numberOfColumns: nu
 const Gallery = () => {
   const data = useStaticQuery<ImgData>(graphql`
     {
-      images: allFile(filter: { relativeDirectory: { eq: "gallery" } }, sort: { fields: name, order: DESC }) {
+      images: allFile(filter: { relativeDirectory: { eq: "gallery" } }, sort: { name: DESC }) {
         edges {
           node {
             relativePath
