@@ -1,13 +1,13 @@
-import * as React from 'react';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import * as React from 'react';
 
-import { Row, Column } from '../components/grid';
-import { Page } from '../components/page';
 import { Button } from '../components/button';
+import { Column, Row } from '../components/grid';
 import { Input } from '../components/input';
+import { Page } from '../components/page';
 import { Textarea } from '../components/textarea';
 import './index.scss';
 
@@ -186,13 +186,13 @@ const IndexPage = () => {
                 <Column className="aci-Section__location-map" spanLg={10} spanXl={10}>
                   <div className="aci-Section__location-map-wrapper">
                     <iframe
+                      src={`https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d372.3125852169921!2d22.8545508!3d41.7097137!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14aa13229332b2bf%3A0x13bb7d1eb75f400a!2sArtCraft%20Ink!5e0!3m2!1sen!2smk!4v1710190304012!5m2!1sen!2smk&key=${data.siteMetadata.map.apiKey}`}
                       width="auto"
                       height="auto"
-                      frameBorder="0"
                       style={{ border: 0 }}
-                      scrolling="no"
-                      src={`https://www.google.com/maps/embed/v1/place?q=Marshal%20Tito%2047%2C%20Berovo%2C%20North%20Macedonia%20&key=${data.siteMetadata.map.apiKey}`}
                       allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
                   </div>
                 </Column>
