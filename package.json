@@ -74,6 +74,5 @@
   },
   "bugs": {
     "url": "https://github.com/artcraftink/artcraftink/issues"
-  },
-  "packageManager": "yarn@3.5.1"
+  }
 }
