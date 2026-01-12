@@ -7,11 +7,15 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "photoswipe": "^5.3.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-helmet": "^6.1.0",
     "react-photoswipe-gallery": "^2.2.2",
     "react-responsive": "^9.0.2"
+  },
+  "overrides": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -67,6 +71,9 @@
     "lint": "eslint --ext .ts,.tsx src/",
     "lint:fix": "yarn lint --fix",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/artcraftink/artcraftink.git"
+  },
+   "engines": {
+    "node": ">=22"
   },
   "repository": {
     "type": "git",
