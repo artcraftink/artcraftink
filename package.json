@@ -72,9 +72,6 @@
     "lint:fix": "yarn lint --fix",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/artcraftink/artcraftink.git"
   },
-   "engines": {
-    "node": ">=22"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/artcraftink/artcraftink"
